@@ -132,7 +132,6 @@ class Init {
 	public static function get_wc_pay_promotion_spec() {
 		$promotions = self::get_promotions();
 		$index      = array_search( 'woocommerce-payments', array_column( $promotions, 'product' ), true );
-
 		if ( false !== $index ) {
 			return $promotions[ $index ];
 		}
