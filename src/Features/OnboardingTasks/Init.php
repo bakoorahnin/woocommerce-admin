@@ -474,7 +474,11 @@ class Init {
 		$registered_extended_tasks_list_items = apply_filters( 'woocommerce_get_registered_extended_tasks', array() );
 		if ( $registered_extended_tasks_list_items !== $extended_tasks_list_items ) {
 			update_option( 'woocommerce_extended_task_list_items', $registered_extended_tasks_list_items );
-			update_option( 'woocommerce_extended_task_list_hidden', 'no' );
+			$extended_list = TaskLists::get_list( 'extended' );
+			if ( ! $extended_list ) {
+				return;
+			}
+			$extended_list->show();
 		}
 	}
 
