@@ -140,7 +140,7 @@ class Init {
 		// Bail early if not on a wc-admin powered page, or task list shouldn't be shown.
 		if (
 			! \Automattic\WooCommerce\Admin\Loader::is_admin_page() ||
-			! \Automattic\WooCommerce\Admin\Features\Onboarding::should_show_tasks()
+			! count( TaskLists::get_visible() )
 		) {
 			return $settings;
 		}
@@ -466,7 +466,7 @@ class Init {
 	public static function update_option_extended_task_list() {
 		if (
 			! \Automattic\WooCommerce\Admin\Loader::is_admin_page() ||
-			! \Automattic\WooCommerce\Admin\Features\Onboarding::should_show_tasks()
+			! count( TaskLists::get_visible() )
 		) {
 			return;
 		}
